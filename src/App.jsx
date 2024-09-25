@@ -1,5 +1,4 @@
-import React, { useState } from 'react'
-import  Home from "./components/Home";
+import React, { useState } from 'react';
 import Router  from './components/Router';
 const App = () => {
 

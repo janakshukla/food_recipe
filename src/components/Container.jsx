@@ -1,12 +1,8 @@
 import React from 'react'
-import{ NavbarWithSearch} from "./Navbar";
 
-const Container = ({children}) => {
+const Container = () => {
   return (
-   <div className='flex-col flex justify-center items-center'>
-    <NavbarWithSearch/>
-  {children }
-   </div>
+    <div>Container</div>
   )
 }
 
