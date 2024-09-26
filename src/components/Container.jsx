@@ -1,8 +1,12 @@
 import React from 'react'
-
-const Container = () => {
+import Navbar from "./Navbar";
+const Container = ({children}) => {
   return (
-    <div>Container</div>
+   <>
+      <Navbar />
+   <div className='flex flex-col justify-center items-center' >
+      {children}</div>
+      </>
   )
 }
 
