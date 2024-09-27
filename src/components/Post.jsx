@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import useAxios from "../hooks/useAxios";
+import gsap from "gsap";
 import Loader from "./Loader";
 import { useParams } from "react-router-dom";
 
@@ -8,11 +9,26 @@ const Post = () => {
   const { data, loading, error } = useAxios(
     `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${PostId}`
   );
+  const postRef = useRef();
+  useEffect(() => {
+    if (postRef.current) {
+      gsap.from(postRef.current, {
+        duration: 1,
+        opacity: 0,
+        y: 100,
+        x: 100,
+        ease: "power3.out",
+       
+        scale: 0.8,
+        
+      });
+    }
+  }, [data]);
 
   if (error) return <p>Error fetching data: {error.message}</p>;
   if (loading) return <Loader />;
   return (
-    <div>
+    <div ref={postRef}  >
       {data &&
         data?.meals.map((meal) => {
           return     <div key={meal.idMeal} className="p-8 bg-gray-900 text-gray-200 min-h-screen">
