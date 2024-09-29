@@ -18,9 +18,7 @@ const Home = () => {
         y: 100,
         ease: "power3.out",
       
-        
-        
-      });
+        });
     }
   }, [data]);
 
