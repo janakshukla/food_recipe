@@ -1,18 +1,25 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const Navbar = () => {
   const [SearchValue, setSearchValue] = useState();
+  const navigate = useNavigate();
 
 const handleclick =async ()=>{
   try {
     const data = await axios.get(`https://www.themealdb.com/api/json/v1/1/search.php?s=${SearchValue}`)
-    console.log(data)
+    navigate(`/post/${data.data.meals[0].idMeal}`)
   } catch (error) {
     console.log(error)
   }
 }
+const handlechange = (e)=>{
+  setSearchValue(e.target.value)
+}
+
+
+
 
 
   return (
@@ -49,9 +56,7 @@ const handleclick =async ()=>{
               id="search-navbar"
               className="block w-full p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Search..."
-              onChange={(e) => {
-                setSearchValue(e.target.value);
-              }}
+              onChange={handlechange}
             />
           </div>
           <button
