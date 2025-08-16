@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 const Home = () => {
   const { data, loading, error } = useAxios(
-    `https://www.themealdb.com/api/json/v1/1/filter.php?c=Seafood`
+    `https://www.themealdb.com/api/json/v1/1/filter.php?a=indian`
   );
   const pageRef = useRef();
 
